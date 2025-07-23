@@ -2,6 +2,7 @@
 import "./globals.css";
 import { ReactNode } from "react";
 import { Inter, Calistoga } from "next/font/google";
+import CustomCursor from "../components/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${inter.variable} ${calistoga.variable} bg-gray-900 text-white antialiased font-sans`}
       >
+        <CustomCursor />
         {children}
       </body>
     </html>
