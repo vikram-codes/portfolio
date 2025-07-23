@@ -75,21 +75,23 @@ export const HeroSection = () => {
         </p>
 
         <div className="flex flex-col md:flex-row items-center justify-center mt-8 gap-4">
-          <button className="inline-flex items-center gap-2 px-6 h-12 rounded-xl border border-neutral-700 hover:-translate-y-1 hover:border-neutral-500 transition-all duration-300 ease-in-out">
-            <span className="font-semibold text-neutral-200">
-              Explore my Projects
-            </span>
-            <ArrowDown className="size-4 text-neutral-400" />
+          <button
+            className="inline-flex items-center gap-2 px-6 h-12 rounded-xl border border-neutral-700 text-neutral-200
+  transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-neutral-500 hover:bg-white/5
+  backdrop-blur-sm"
+          >
+            <span className="font-semibold">Explore my Projects</span>
+            <ArrowDown className="size-4 text-neutral-400 transition-transform duration-300 group-hover:translate-y-1" />
           </button>
 
           <button
-            className="lets-connect-btn inline-flex items-center gap-2 px-6 h-12 rounded-xl text-white font-semibold shadow-lg border-0 hover:scale-105 transition-transform duration-300
-hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]
-hover:backdrop-blur-sm hover:bg-white/10
-"
+            className="lets-connect-btn inline-flex items-center gap-2 px-6 h-12 rounded-xl text-white font-semibold border-0
+  bg-white/5 backdrop-blur-sm transition-all duration-300 ease-in-out
+  hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 group"
           >
-            <span className="wave-hand">👋🏻</span>
-
+            <span className="wave-hand text-lg group-hover:animate-wiggle">
+              👋🏻
+            </span>
             <span>Let&#39;s Connect</span>
           </button>
         </div>
