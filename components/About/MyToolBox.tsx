@@ -101,7 +101,7 @@ const toolboxItem = [
 function MyToolBox() {
   return (
     <div className="flex justify-center mb-10">
-      <Card>
+      <Card className="pb-9">
         <div className="flex justify-center items-center gap-x-2">
           <Star className="size-9 text-emerald-300" />
           <h3 className="text-xl font-semibold text-white">My Toolbox</h3>
@@ -111,7 +111,7 @@ function MyToolBox() {
           experiences.
         </p>
         <ToolboxItem toolboxItem={toolboxItem} />
-        <ToolboxItem toolboxItem={toolboxItem} />
+        <ToolboxItem toolboxItem={toolboxItem} className="-translate-x-1/2" />
       </Card>
     </div>
   );

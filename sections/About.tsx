@@ -20,10 +20,22 @@ export const AboutSection = () => {
           and personal interests.
         </p>
 
-        <MyReads />
-        <MyToolBox />
-        <BeyondTheCode />
-        <MyLocation />
+        <div className="md:grid grid-cols-5 md:gap-8 mb-2">
+          <div className="md:col-span-2 ">
+            <MyReads />
+          </div>
+          <div className="md:col-span-3">
+            <MyToolBox />
+          </div>
+        </div>
+        <div className="md:grid grid-cols-5 md:gap-8 pb-2">
+          <div className=" md:col-span-3">
+            <BeyondTheCode />
+          </div>
+          <div className=" md:col-span-2">
+            <MyLocation />
+          </div>
+        </div>
       </div>
     </div>
   );
