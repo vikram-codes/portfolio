@@ -27,11 +27,23 @@ const config: Config = {
       },
       animation: {
         fadeIn: "fadeIn 1s ease-out forwards",
+
+        "scroll-left": "scrollLeft 30s linear infinite",
+        "scroll-right": "scrollRight 30s linear infinite",
       },
       keyframes: {
         fadeIn: {
-          "0%": { opacity: 0 },
-          "100%": { opacity: 1 },
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+
+        scrollLeft: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        scrollRight: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(100%)" },
         },
       },
     },
