@@ -110,8 +110,14 @@ function MyToolBox() {
           Discover the tools and technologies I use to craft exceptional web
           experiences.
         </p>
-        <ToolboxItem toolboxItem={toolboxItem} />
-        <ToolboxItem toolboxItem={toolboxItem} className="-translate-x-1/2" />
+        <ToolboxItem
+          toolboxItem={toolboxItem}
+          className="animate-move-left [animation-duration:30s]"
+        />
+        <ToolboxItem
+          toolboxItem={toolboxItem}
+          className="-translate-x-1/2 animate-move-right [animation-duration:20s]"
+        />
       </Card>
     </div>
   );

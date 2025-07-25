@@ -1,5 +1,7 @@
 import Card from "../Card";
 import Star from "../../assets/icons/star.svg";
+import { motion } from "framer-motion";
+import { useRef } from "react";
 
 const hobbies = [
   {
@@ -47,6 +49,7 @@ const hobbies = [
 ];
 
 function BeyondTheCode() {
+  const constraintRef = useRef(null);
   return (
     <>
       <div className="flex justify-center mb-10">
@@ -64,21 +67,34 @@ function BeyondTheCode() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1 relative">
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1 relative"
+            ref={constraintRef}
+          >
             {hobbies.map((hobby, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="flex items-center  justify-center gap-2 px-5 py-2 rounded-full
+                className="flex items-center justify-center gap-2 px-5 py-2 rounded-full
         bg-gradient-to-r from-emerald-500 via-sky-500 to-purple-500
         text-gray-900 shadow-[0_0_12px_rgba(0,0,0,0.2)]
-        border border-white/10 absolute transition-all duration-300"
+        border border-white/10 absolute cursor-grab active:cursor-grabbing"
                 style={{ left: hobby.left, top: hobby.top }}
+                drag
+                dragConstraints={constraintRef}
+                dragElastic={0.1}
+                dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+                whileDrag={{ 
+                  scale: 1.1, 
+                  zIndex: 10,
+                  boxShadow: "0 0 20px rgba(0,0,0,0.3)"
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 <span className="font-semibold text-gray-950 text-sm">
                   {hobby.title}
                 </span>
                 <div className="text-base">{hobby.icon}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </Card>

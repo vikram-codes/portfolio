@@ -23,8 +23,8 @@ export const TapeSection = () => {
     <div className="py-16 lg:py-24 overflow-x-clip">
       <div className="bg-gradient-to-r from-emerald-300 to-sky-400 -rotate-3 -mx-1">
         <div className="flex [mask-image:linear-gradient(to_right,transparent,black10%,black90%,transparent)]">
-          <div className="flex flex-none gap-4 pr-4 py-3 animate-move-left">
-            {[...new Array(3)].map((_, index) => (
+          <div className="flex flex-none gap-4 pr-4 py-3 animate-move-left-tape [animation-duration:30s]">
+            {[...new Array(3).fill(0)].map((_, index) => (
               <Fragment key={index}>
                 {words.map((word) => (
                   <div className="inline-flex gap-4" key={word}>
