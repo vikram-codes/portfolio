@@ -30,11 +30,19 @@ const config: Config = {
 
         "scroll-left": "scrollLeft 30s linear infinite",
         "scroll-right": "scrollRight 30s linear infinite",
+        "ping-large": "ping-large 2s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
+        },
+
+        "ping-large": {
+          "75%, 100%": {
+            transform: "scale(4)",
+            opacity: "0",
+          },
         },
 
         scrollLeft: {

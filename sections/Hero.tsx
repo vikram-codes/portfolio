@@ -56,8 +56,8 @@ export const HeroSection = () => {
 
           <div className="mt-4 flex flex-col sm:flex-row items-center gap-2 sm:gap-4 bg-gray-950 border border-gray-800 px-4 py-1.5 rounded-lg">
             <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-green-500 opacity-75 animate-ping"></div>
-              <div className="relative bg-green-500 size-2.5 rounded-full z-10"></div>
+              <div className="absolute inset-0 rounded-full bg-green-500 opacity-75 animate-ping-large"></div>
+              <div className="relative bg-green-500 size-2.5 rounded-full"></div>
             </div>
             <div className="text-sm font-medium text-center sm:text-left">
               Available for new opportunities
@@ -65,7 +65,7 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-semibold text-center mt-6 md:mt-8 bg-gradient-to-r from-white via-neutral-400 to-white bg-[length:300%] bg-clip-text text-transparent animate-[shimmer_4s_infinite]">
+        <h1 className="text-4xl md:text-5xl font-semibold text-center mt-6 md:mt-8 bg-gradient-to-r from-white via-neutral-400 to-white bg-[length:300%] bg-clip-text text-transparent">
           Building Modern Web Experiences
         </h1>
 
