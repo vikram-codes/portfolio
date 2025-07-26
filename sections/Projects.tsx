@@ -29,6 +29,7 @@ const portfolioProjects = [
       },
     ],
     link: "https://converso-vlse.vercel.app/",
+    github: "https://github.com/vikram-codes/Converso",
     image: converso,
   },
   {
@@ -49,6 +50,7 @@ const portfolioProjects = [
       },
     ],
     link: "https://the-wild-oasis-website-rho.vercel.app",
+    github: "https://github.com/vikram-codes/The-Wild-Oasis-Webiste",
     image: theWildOasis,
   },
   {
@@ -65,6 +67,7 @@ const portfolioProjects = [
       },
     ],
     link: "https://fast-pizza-co-iota.vercel.app",
+    github: "https://github.com/vikram-codes/Fast-Pizza-co.",
     image: fastPizzaCo,
   },
 ];
@@ -139,12 +142,17 @@ export const ProjectsSection = () => {
                           <ArrowUpRight className="inline-block ml-1 size-4" />
                         </span>
                       </a>
-                      <button className="px-4 py-2 text-sm rounded-lg border border-white/15 text-white font-medium hover:bg-white/10 transition items-center min-w-[90px]">
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 text-sm rounded-lg border border-white/15 text-white font-medium hover:bg-white/10 transition items-center min-w-[90px]"
+                      >
                         <span>View Code</span>
                         <span>
                           <GithubLogo className="inline-block ml-2 size-4" />
                         </span>
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </motion.div>
