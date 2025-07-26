@@ -1,6 +1,16 @@
+"use client";
+
 import ArrowUpRight from "../assets/icons/arrow-up-right.svg";
 
 export const ContactSection = () => {
+  const handleLinkedInConnect = () => {
+    window.open(
+      "https://www.linkedin.com/in/vikramjit-saini/",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   return (
     <div className="contact-section py-24 pt-24">
       <div className="container">
@@ -16,9 +26,13 @@ export const ContactSection = () => {
               </p>
             </div>
             <div>
-              <button className="group text-white bg-gray-900 inline-flex items-center px-6 h-12 rounded-xl mt-8 gap-2 w-max border border-gray-900 hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-emerald-400 relative overflow-hidden">
+              <button
+                onClick={handleLinkedInConnect}
+                title="Connect with me on LinkedIn"
+                className="group text-white bg-gray-900 inline-flex items-center px-6 h-12 rounded-xl mt-8 gap-2 w-max border border-gray-900 hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-emerald-400 relative overflow-hidden cursor-pointer"
+              >
                 <span className="font-semibold relative z-10 transition-all duration-300 group-hover:tracking-widest group-hover:text-emerald-300">
-                  Let's Connect
+                  Let&#39;s Connect
                 </span>
                 <span className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-r from-emerald-400/20 via-sky-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
                 <ArrowUpRight className="size-5 ml-2 relative z-10 transition-transform duration-500 group-hover:rotate-[30deg] group-hover:scale-125 group-hover:drop-shadow-[0_2px_8px_rgba(16,185,129,0.4)]" />

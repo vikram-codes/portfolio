@@ -1,3 +1,5 @@
+"use client";
+
 // import myImageIcon from "../assets/images/my-image-icon-new.png";
 import myImageIcon from "../assets/images/memoji-computer.png";
 import ArrowDown from "../assets/icons/arrow-down.svg";
@@ -9,6 +11,21 @@ import Sparkle from "../assets/icons/sparkle.svg";
 import HeroOrbit from "../components/HeroOrbit";
 
 export const HeroSection = () => {
+  const scrollToSection = (sectionClass: string) => {
+    const element = document.querySelector(`.${sectionClass}`);
+    if (element) {
+      const headerOffset = 80; // Account for fixed header height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="hero-section py-32 md:py-48 relative z-0 overflow-x-clip">
       <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)]">
@@ -86,18 +103,20 @@ export const HeroSection = () => {
 
         <div className="flex flex-col md:flex-row items-center justify-center mt-8 gap-4">
           <button
+            onClick={() => scrollToSection("projects-section")}
             className="inline-flex items-center gap-2 px-6 h-12 rounded-xl border border-neutral-700 text-neutral-200
   transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-neutral-500 hover:bg-white/5
-  backdrop-blur-sm"
+  backdrop-blur-sm cursor-pointer"
           >
             <span className="font-semibold">Explore my Projects</span>
             <ArrowDown className="size-4 text-neutral-400 transition-transform duration-300 group-hover:translate-y-1" />
           </button>
 
           <button
+            onClick={() => scrollToSection("contact-section")}
             className="lets-connect-btn inline-flex items-center gap-2 px-6 h-12 rounded-xl text-white font-semibold border-0
   bg-white/5 backdrop-blur-sm transition-all duration-300 ease-in-out
-  hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 group"
+  hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 group cursor-pointer"
           >
             <span className="wave-hand text-lg group-hover:animate-wiggle">
               👋🏻
