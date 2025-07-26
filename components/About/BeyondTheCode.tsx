@@ -63,7 +63,7 @@ function BeyondTheCode() {
             </div>
             <p className="text-neutral-400 text-sm pt-3">
               A peek into my interests outside of Development—things that keep
-              my brain buzzing and soul happy.
+              my brain buzzing and soul happy. (DRAG THESE ⬇)
             </p>
           </div>
 
@@ -83,10 +83,10 @@ function BeyondTheCode() {
                 dragConstraints={constraintRef}
                 dragElastic={0.1}
                 dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
-                whileDrag={{ 
-                  scale: 1.1, 
+                whileDrag={{
+                  scale: 1.1,
                   zIndex: 10,
-                  boxShadow: "0 0 20px rgba(0,0,0,0.3)"
+                  boxShadow: "0 0 20px rgba(0,0,0,0.3)",
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >

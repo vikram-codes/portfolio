@@ -7,7 +7,7 @@ import MyLocation from "../components/About/MyLocation";
 
 export const AboutSection = () => {
   return (
-    <div className="py-24">
+    <div className="about-section py-24">
       <div className="container">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-sky-400 mb-4">
           A Glimpse into My World

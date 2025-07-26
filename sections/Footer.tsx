@@ -33,7 +33,7 @@ const footerLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="relative overflow-x-clip">
+    <footer className="footer-section relative overflow-x-clip">
       <div className="absolute h-[400px] w-[1600px] bottom-0 left-1/2 transform -translate-x-1/2 bg-emerald-300/30 -z-10 [mask-image:radial-gradient(50%_50%_at_bottom_center,black,transparent)] "></div>
       <div className="container">
         <div className="py-6  border-t border-white/15 flex flex-col md:flex-row md:justify-between items-center gap-8">

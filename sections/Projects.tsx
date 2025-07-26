@@ -71,7 +71,7 @@ const portfolioProjects = [
 
 export const ProjectsSection = () => {
   return (
-    <div className="relative z-10">
+    <div className="projects-section py-16 md:py-24">
       <div className="container py-24 px-4 md:px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-sky-400 mb-4">
           Featured Projects
@@ -84,7 +84,7 @@ export const ProjectsSection = () => {
         </p>
 
         {/* Stacking zone */}
-        <div className="relative h-[300vh] md:h-[120vh] lg:h-[120vh]">
+        <div className="relative h-[200vh]">
           <div className="absolute top-0 left-0 w-full h-full space-y-16">
             {portfolioProjects.map((project, idx) => {
               const topOffset = 80 + idx * 50;

@@ -112,11 +112,11 @@ function MyToolBox() {
         </p>
         <ToolboxItem
           toolboxItem={toolboxItem}
-          className="animate-move-left [animation-duration:30s]"
+          className="animate-move-left [animation-duration:30s] hover:[animation-play-state:paused]"
         />
         <ToolboxItem
           toolboxItem={toolboxItem}
-          className="-translate-x-1/2 animate-move-right [animation-duration:20s]"
+          className="-translate-x-1/2 animate-move-right [animation-duration:20s] hover:[animation-play-state:paused]"
         />
       </Card>
     </div>

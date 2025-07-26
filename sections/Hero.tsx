@@ -2,6 +2,7 @@
 import myImageIcon from "../assets/images/memoji-computer.png";
 import ArrowDown from "../assets/icons/arrow-down.svg";
 import Image from "next/image";
+import CatSideEye from "../assets/images/cat-side-eye.png";
 // import grainImage from "../assets/images/grain.jpg";
 import Star from "../assets/icons/star.svg";
 import Sparkle from "../assets/icons/sparkle.svg";
@@ -9,7 +10,7 @@ import HeroOrbit from "../components/HeroOrbit";
 
 export const HeroSection = () => {
   return (
-    <div className="py-32 md:py-48 relative z-0 overflow-x-clip">
+    <div className="hero-section py-32 md:py-48 relative z-0 overflow-x-clip">
       <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)]">
         <div className="size-[620px] hero-ring pointer-events-none"></div>
         <div className="size-[820px] hero-ring pointer-events-none"></div>
@@ -48,11 +49,20 @@ export const HeroSection = () => {
       </div>
       <div className="container">
         <div className="flex flex-col items-center">
-          <Image
-            src={myImageIcon}
-            alt="My Image Icon"
-            className="w-[70px] md:w-[100px]"
-          />
+          <div className="relative w-[70px] md:w-[100px] h-[70px] md:h-[100px] group cursor-pointer">
+            {/* Main Image */}
+            <Image
+              src={myImageIcon}
+              alt="My Image Icon"
+              className="w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:opacity-0 group-hover:scale-110"
+            />
+            {/* Hover Image */}
+            <Image
+              src={CatSideEye}
+              alt="Cat Side Eye"
+              className="absolute inset-0 w-full h-full object-cover opacity-0 scale-90 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:scale-100"
+            />
+          </div>
 
           <div className="mt-4 flex flex-col sm:flex-row items-center gap-2 sm:gap-4 bg-gray-950 border border-gray-800 px-4 py-1.5 rounded-lg">
             <div className="relative">
