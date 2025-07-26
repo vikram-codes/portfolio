@@ -84,7 +84,7 @@ export const ProjectsSection = () => {
         </p>
 
         {/* Stacking zone */}
-        <div className="relative h-[200vh]">
+        <div className="relative h-[300vh]">
           <div className="absolute top-0 left-0 w-full h-full space-y-16">
             {portfolioProjects.map((project, idx) => {
               const topOffset = 80 + idx * 50;
