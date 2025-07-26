@@ -9,6 +9,7 @@ import CatSideEye from "../assets/images/cat-side-eye.png";
 import Star from "../assets/icons/star.svg";
 import Sparkle from "../assets/icons/sparkle.svg";
 import HeroOrbit from "../components/HeroOrbit";
+import SpecialClickableWord from "../components/SpecialClickableWord";
 
 export const HeroSection = () => {
   const scrollToSection = (sectionClass: string) => {
@@ -87,7 +88,11 @@ export const HeroSection = () => {
               <div className="relative bg-green-500 size-2.5 rounded-full"></div>
             </div>
             <div className="text-sm font-medium text-center sm:text-left">
-              Available for new opportunities
+              Available for new opportunities as a{" "}
+              <SpecialClickableWord className="font-bold">
+                DEVELOPER
+              </SpecialClickableWord>{" "}
+              ✨
             </div>
           </div>
         </div>
