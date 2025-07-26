@@ -20,6 +20,13 @@ export const metadata = {
   title: "My Portfolio",
   description:
     "Personal portfolio website built with Next.js and Tailwind CSS. Showcasing projects, skills, and experience.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

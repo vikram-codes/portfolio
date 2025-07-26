@@ -1,13 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 
-const SpecialClickableWord = ({ children, className = "" }) => {
+interface SpecialClickableWordProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const SpecialClickableWord = ({ children, className = "" }: SpecialClickableWordProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = () => {
-    if (typeof window !== "undefined" && window.triggerSpecialClick) {
-      window.triggerSpecialClick();
+    if (typeof window !== "undefined" && (window as any).triggerSpecialClick) {
+      (window as any).triggerSpecialClick();
     }
   };
 

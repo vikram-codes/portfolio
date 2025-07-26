@@ -1,3 +1,5 @@
+import { PropsWithChildren } from "react";
+
 function HeroOrbit({
   children,
   size,

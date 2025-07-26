@@ -79,16 +79,20 @@ const MESSAGES = {
 };
 
 const EasterEggSystem = () => {
-  const [currentMessage, setCurrentMessage] = useState(null);
+  const [currentMessage, setCurrentMessage] = useState<{
+    text: string;
+    emoji: string;
+    type: string;
+  } | null>(null);
   const [konamiCount, setKonamiCount] = useState(0);
   const [secretFound, setSecretFound] = useState(false);
   const [specialClickFound, setSpecialClickFound] = useState(false);
-  const [keySequence, setKeySequence] = useState([]);
+  const [keySequence, setKeySequence] = useState<string[]>([]);
   const [showProgressBar, setShowProgressBar] = useState(false); // Default hidden
   const [showCompletionCelebration, setShowCompletionCelebration] =
     useState(false);
   const [celebrationShown, setCelebrationShown] = useState(false); // Track if celebration was already shown
-  const progressBarRef = useRef(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
 
   // Load progress from localStorage on mount
   useEffect(() => {
@@ -104,8 +108,8 @@ const EasterEggSystem = () => {
     }
   }, []);
 
-  // Save progress to localStorage
-  const saveProgress = useCallback(() => {
+  // Save when progress changes
+  useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem(
         "easterEggProgress",
@@ -119,17 +123,6 @@ const EasterEggSystem = () => {
     }
   }, [konamiCount, secretFound, specialClickFound, celebrationShown]);
 
-  // Save when progress changes
-  useEffect(() => {
-    saveProgress();
-  }, [
-    konamiCount,
-    secretFound,
-    specialClickFound,
-    celebrationShown,
-    saveProgress,
-  ]);
-
   // Calculate progress
   const konamiFound = konamiCount > 0;
   const totalSecrets = 3; // Konami, Secret Star, Special Click
@@ -138,10 +131,13 @@ const EasterEggSystem = () => {
   ).length;
   const progressPercentage = (foundSecrets / totalSecrets) * 100;
 
-  const showMessage = useCallback((message) => {
-    setCurrentMessage(message);
-    setTimeout(() => setCurrentMessage(null), 6000); // Increased from 4000ms to 6000ms (6 seconds)
-  }, []);
+  const showMessage = useCallback(
+    (message: { text: string; emoji: string; type: string }) => {
+      setCurrentMessage(message);
+      setTimeout(() => setCurrentMessage(null), 6000); // Increased from 4000ms to 6000ms (6 seconds)
+    },
+    []
+  );
 
   // Close completion celebration
   const closeCompletionCelebration = useCallback(() => {
@@ -154,10 +150,10 @@ const EasterEggSystem = () => {
 
   // Click outside handler for progress bar
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         progressBarRef.current &&
-        !progressBarRef.current.contains(event.target)
+        !progressBarRef.current.contains(event.target as Node)
       ) {
         setShowProgressBar(false);
       }
@@ -188,7 +184,7 @@ const EasterEggSystem = () => {
 
   // Konami Code Detection
   useEffect(() => {
-    const handleKeyPress = (e) => {
+    const handleKeyPress = (e: KeyboardEvent) => {
       const newSequence = [...keySequence, e.code].slice(-KONAMI_CODE.length);
       setKeySequence(newSequence);
 
@@ -240,11 +236,11 @@ const EasterEggSystem = () => {
   // Expose the special click handler globally so we can call it from other components
   useEffect(() => {
     if (typeof window !== "undefined") {
-      window.triggerSpecialClick = handleSpecialClick;
+      (window as any).triggerSpecialClick = handleSpecialClick;
     }
     return () => {
       if (typeof window !== "undefined") {
-        delete window.triggerSpecialClick;
+        delete (window as any).triggerSpecialClick;
       }
     };
   }, [specialClickFound, handleSpecialClick]);
