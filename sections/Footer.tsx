@@ -13,7 +13,7 @@ const footerLinks = [
   },
   {
     title: "LinkedIn",
-    url: "https://www.linkedin.com/in/vikram-codes/",
+    url: "https://www.linkedin.com/in/vikramjit-saini/",
     icon: (
       <Image
         src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg"
@@ -26,7 +26,7 @@ const footerLinks = [
   },
   {
     title: "Email",
-    url: "mailto:vikramjit.personal@gmail.com",
+    url: "mailto:vikramjit.professional@gmail.com",
     icon: <GmailLogo width={24} height={24} />,
   },
 ];
