@@ -1,5 +1,5 @@
-// components/Card.tsx
 import { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 const Card = ({
   children,

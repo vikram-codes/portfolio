@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Constants moved outside component to avoid dependency issues
 const KONAMI_CODE = [
   "ArrowUp",
   "ArrowUp",
@@ -88,13 +87,12 @@ const EasterEggSystem = () => {
   const [secretFound, setSecretFound] = useState(false);
   const [specialClickFound, setSpecialClickFound] = useState(false);
   const [keySequence, setKeySequence] = useState<string[]>([]);
-  const [showProgressBar, setShowProgressBar] = useState(false); // Default hidden
+  const [showProgressBar, setShowProgressBar] = useState(false);
   const [showCompletionCelebration, setShowCompletionCelebration] =
     useState(false);
-  const [celebrationShown, setCelebrationShown] = useState(false); // Track if celebration was already shown
+  const [celebrationShown, setCelebrationShown] = useState(false);
   const progressBarRef = useRef<HTMLDivElement>(null);
 
-  // Load progress from localStorage on mount
   useEffect(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("easterEggProgress");
@@ -103,12 +101,11 @@ const EasterEggSystem = () => {
         setKonamiCount(progress.konamiCount || 0);
         setSecretFound(progress.secretFound || false);
         setSpecialClickFound(progress.specialClickFound || false);
-        setCelebrationShown(progress.celebrationShown || false); // Load celebration status
+        setCelebrationShown(progress.celebrationShown || false);
       }
     }
   }, []);
 
-  // Save when progress changes
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem(
@@ -123,9 +120,8 @@ const EasterEggSystem = () => {
     }
   }, [konamiCount, secretFound, specialClickFound, celebrationShown]);
 
-  // Calculate progress
   const konamiFound = konamiCount > 0;
-  const totalSecrets = 3; // Konami, Secret Star, Special Click
+  const totalSecrets = 3;
   const foundSecrets = [konamiFound, secretFound, specialClickFound].filter(
     Boolean
   ).length;
@@ -134,21 +130,19 @@ const EasterEggSystem = () => {
   const showMessage = useCallback(
     (message: { text: string; emoji: string; type: string }) => {
       setCurrentMessage(message);
-      setTimeout(() => setCurrentMessage(null), 6000); // Increased from 4000ms to 6000ms (6 seconds)
+      setTimeout(() => setCurrentMessage(null), 6000);
     },
     []
   );
 
-  // Close completion celebration
   const closeCompletionCelebration = useCallback(() => {
     setShowCompletionCelebration(false);
     setShowProgressBar(false);
     if (!celebrationShown) {
-      setCelebrationShown(true); // Mark celebration as shown
+      setCelebrationShown(true);
     }
   }, [celebrationShown]);
 
-  // Click outside handler for progress bar
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -168,21 +162,18 @@ const EasterEggSystem = () => {
     };
   }, [showProgressBar]);
 
-  // Auto-show completion celebration when all secrets found (only once)
   useEffect(() => {
     if (
       foundSecrets === totalSecrets &&
       !showCompletionCelebration &&
       !celebrationShown
     ) {
-      // Add delay so user can see the final easter egg message first
       setTimeout(() => {
         setShowCompletionCelebration(true);
-      }, 2000); // 2 second delay to see the final message
+      }, 2000);
     }
   }, [foundSecrets, totalSecrets, showCompletionCelebration, celebrationShown]);
 
-  // Konami Code Detection
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       const newSequence = [...keySequence, e.code].slice(-KONAMI_CODE.length);
@@ -200,7 +191,6 @@ const EasterEggSystem = () => {
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, [keySequence, konamiCount, showMessage]);
 
-  // Special Click Handler (for the magic word)
   const handleSpecialClick = useCallback(() => {
     if (!specialClickFound) {
       setSpecialClickFound(true);
@@ -233,7 +223,6 @@ const EasterEggSystem = () => {
     }
   }, [specialClickFound, showMessage]);
 
-  // Expose the special click handler globally so we can call it from other components
   useEffect(() => {
     if (typeof window !== "undefined") {
       (window as any).triggerSpecialClick = handleSpecialClick;
@@ -245,7 +234,6 @@ const EasterEggSystem = () => {
     };
   }, [specialClickFound, handleSpecialClick]);
 
-  // Secret Star Handler
   const handleSecretStar = () => {
     if (!secretFound) {
       setSecretFound(true);
@@ -280,7 +268,6 @@ const EasterEggSystem = () => {
 
   return (
     <>
-      {/* Easter Egg Progress Bar */}
       <AnimatePresence>
         {showProgressBar && (
           <motion.div
@@ -294,7 +281,6 @@ const EasterEggSystem = () => {
               className="bg-gray-800/90 backdrop-blur-sm border border-gray-700 rounded-lg p-3 shadow-lg max-w-xs"
             >
               {foundSecrets === totalSecrets ? (
-                // Completed state with cheeky message
                 <div className="text-center">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-mono text-emerald-400">
@@ -308,7 +294,6 @@ const EasterEggSystem = () => {
                     </button>
                   </div>
 
-                  {/* Full Progress Bar */}
                   <div className="relative bg-gray-700 rounded-full h-2 mb-3 overflow-hidden">
                     <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-emerald-400 to-sky-400 rounded-full animate-pulse" />
                   </div>
@@ -328,7 +313,6 @@ const EasterEggSystem = () => {
                   </div>
                 </div>
               ) : (
-                // Regular progress state
                 <>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-mono text-gray-400">
@@ -342,7 +326,6 @@ const EasterEggSystem = () => {
                     </button>
                   </div>
 
-                  {/* Progress Bar */}
                   <div className="relative bg-gray-700 rounded-full h-2 mb-2 overflow-hidden">
                     <motion.div
                       className="absolute top-0 left-0 h-full bg-gradient-to-r from-emerald-400 to-sky-400 rounded-full"
@@ -356,7 +339,6 @@ const EasterEggSystem = () => {
                     {foundSecrets}/{totalSecrets} secrets unleashed 🎯
                   </div>
 
-                  {/* Hints */}
                   <div className="space-y-1 text-xs">
                     {!konamiFound && (
                       <div className="flex items-center gap-2 text-gray-400">
@@ -382,7 +364,6 @@ const EasterEggSystem = () => {
                     )}
                   </div>
 
-                  {/* Completed hints */}
                   {konamiFound && (
                     <div className="flex items-center gap-2 text-xs text-emerald-400 mt-1">
                       <span className="w-2 h-2 bg-emerald-400 rounded-full"></span>
@@ -408,7 +389,6 @@ const EasterEggSystem = () => {
         )}
       </AnimatePresence>
 
-      {/* Toggle Progress Bar Button (when hidden) */}
       <AnimatePresence>
         {!showProgressBar && (
           <motion.button
@@ -434,7 +414,6 @@ const EasterEggSystem = () => {
         )}
       </AnimatePresence>
 
-      {/* MASSIVE COMPLETION CELEBRATION */}
       <AnimatePresence>
         {showCompletionCelebration && (
           <motion.div
@@ -451,7 +430,6 @@ const EasterEggSystem = () => {
               className="relative bg-gradient-to-br from-emerald-400 via-sky-400 to-purple-500 p-1 rounded-2xl max-w-md mx-4"
             >
               <div className="bg-gray-900 rounded-xl p-8 text-center relative overflow-hidden">
-                {/* Close Button */}
                 <button
                   onClick={closeCompletionCelebration}
                   className="absolute top-4 right-4 z-30 w-8 h-8 bg-gray-800/80 hover:bg-gray-700/80 rounded-full flex items-center justify-center text-gray-400 hover:text-white transition-colors group cursor-pointer select-none"
@@ -463,7 +441,6 @@ const EasterEggSystem = () => {
                   </span>
                 </button>
 
-                {/* Animated background particles */}
                 <div className="absolute inset-0 opacity-30 pointer-events-none">
                   {[...Array(20)].map((_, i) => (
                     <motion.div
@@ -547,7 +524,6 @@ const EasterEggSystem = () => {
                   🚀✨🎯
                 </motion.div>
 
-                {/* Back to Site Button */}
                 <motion.button
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -564,23 +540,18 @@ const EasterEggSystem = () => {
         )}
       </AnimatePresence>
 
-      {/* Secret Star - Top Right */}
       <div
         className="fixed top-4 right-4 z-50 cursor-pointer group"
         onClick={handleSecretStar}
         title="🤫"
       >
         <div className="relative">
-          {/* Main star dot */}
           <div className="w-2 h-2 bg-yellow-400 rounded-full opacity-30 group-hover:opacity-100 transition-all duration-300 group-hover:animate-spin"></div>
-          {/* Subtle glow effect */}
           <div className="absolute inset-0 w-2 h-2 bg-yellow-400 rounded-full animate-pulse opacity-20 group-hover:opacity-60 blur-sm"></div>
-          {/* Tiny sparkle */}
           <div className="absolute -top-1 -right-1 w-1 h-1 bg-white rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping"></div>
         </div>
       </div>
 
-      {/* Meme-Style Popup */}
       <AnimatePresence>
         {currentMessage && (
           <motion.div

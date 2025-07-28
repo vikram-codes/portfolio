@@ -3,8 +3,6 @@ import Image from "next/image";
 import Card from "../Card";
 import MemojiSmile from "../../assets/images/memoji-smile.png";
 import Map from "../../assets/images/map.png";
-// import Map from "../../assets/images/map-london-real.png";
-// import Map from "../../assets/images/map-toronto.png";
 
 const TEXTS = [
   "Hey, I'm here!",
@@ -30,7 +28,6 @@ function MyLocation() {
         }, 100);
         return () => clearTimeout(timeout);
       } else {
-        // Finished typing, wait before starting to delete
         const timeout = setTimeout(() => {
           setIsTyping(false);
         }, 2000);
@@ -43,14 +40,12 @@ function MyLocation() {
         }, 50);
         return () => clearTimeout(timeout);
       } else {
-        // Finished deleting, move to next text
         setCurrentTextIndex((prev) => (prev + 1) % TEXTS.length);
         setIsTyping(true);
       }
     }
   }, [displayedText, isTyping, currentTextIndex]);
 
-  // Cursor blinking effect
   useEffect(() => {
     const cursorInterval = setInterval(() => {
       setShowCursor((prev) => !prev);
@@ -61,7 +56,7 @@ function MyLocation() {
   return (
     <div className="flex justify-center mb-10">
       <Card className="relative h-[320px] !p-0 overflow-hidden group cursor-pointer">
-        {/* Animated Background Overlay */}
+              <div className="relative h-full w-full group">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
 
         <Image
@@ -73,7 +68,6 @@ function MyLocation() {
           sizes="(max-width: 768px) 100vw, W600px"
         />
 
-        {/* Animated Text Badge */}
         <div className="absolute top-2 left-6 flex items-center space-x-3 rounded-xl px-4 py-2 shadow-lg backdrop-blur-md bg-white/10 border border-white/20 transition-all duration-500 hover:scale-105 z-20">
           <div className="relative">
             <Image
@@ -100,7 +94,6 @@ function MyLocation() {
           <span className="font-semibold">London, Ontario 🇨🇦</span>
         </div>
 
-        {/* Floating particles */}
         <div className="absolute inset-0 pointer-events-none z-15">
           <div
             className="absolute top-1/4 left-1/3 w-2 h-2 bg-emerald-400/70 rounded-full animate-bounce opacity-60"

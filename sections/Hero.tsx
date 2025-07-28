@@ -1,11 +1,9 @@
 "use client";
 
-// import myImageIcon from "../assets/images/my-image-icon-new.png";
 import myImageIcon from "../assets/images/memoji-computer.png";
 import ArrowDown from "../assets/icons/arrow-down.svg";
 import Image from "next/image";
 import CatSideEye from "../assets/images/cat-side-eye.png";
-// import grainImage from "../assets/images/grain.jpg";
 import Star from "../assets/icons/star.svg";
 import Sparkle from "../assets/icons/sparkle.svg";
 import HeroOrbit from "../components/HeroOrbit";
@@ -68,13 +66,11 @@ export const HeroSection = () => {
       <div className="container">
         <div className="flex flex-col items-center">
           <div className="relative w-[70px] md:w-[100px] h-[70px] md:h-[100px] group cursor-pointer">
-            {/* Main Image */}
             <Image
               src={myImageIcon}
               alt="My Image Icon"
               className="w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:opacity-0 group-hover:scale-110"
             />
-            {/* Hover Image */}
             <Image
               src={CatSideEye}
               alt="Cat Side Eye"

@@ -1,8 +1,6 @@
-// app/layout.tsx
 import "./globals.css";
 import { ReactNode } from "react";
 import { Inter, Calistoga } from "next/font/google";
-// import CustomCursor from "../components/CustomCursor"; // Commented out to fix mouse cursor issues with easter eggs
 import EasterEggSystem from "../components/EasterEggSystem";
 
 const inter = Inter({
@@ -36,8 +34,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={`${inter.variable} ${calistoga.variable} bg-gray-900 text-white antialiased font-sans`}
       >
         <EasterEggSystem />
-        {/* <CustomCursor /> */}{" "}
-        {/* Commented out to fix mouse cursor issues with easter eggs */}
         {children}
       </body>
     </html>

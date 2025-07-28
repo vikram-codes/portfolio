@@ -10,7 +10,6 @@ export const Header = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Determine which section this element belongs to
             const element = entry.target;
 
             if (element.classList.contains("hero-section")) {
@@ -37,7 +36,6 @@ export const Header = () => {
       }
     );
 
-    // Convert NodeList to Array properly and observe sections
     const observeSections = () => {
       const selectors = [
         ".hero-section",
@@ -58,7 +56,6 @@ export const Header = () => {
       });
     };
 
-    // Wait a bit for DOM to be fully ready
     setTimeout(observeSections, 100);
 
     return () => observer.disconnect();

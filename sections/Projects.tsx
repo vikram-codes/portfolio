@@ -86,7 +86,6 @@ export const ProjectsSection = () => {
           technologies.
         </p>
 
-        {/* Stacking zone */}
         <div className="relative h-[300vh]">
           <div className="absolute top-0 left-0 w-full h-full space-y-16">
             {portfolioProjects.map((project, idx) => {
@@ -103,7 +102,6 @@ export const ProjectsSection = () => {
                   className={`sticky mx-auto max-w-3xl z-[${zIndex}] rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 shadow-md overflow-hidden transition-all duration-500 hover:border-white/20`}
                   style={{ top: `${topOffset}px` }}
                 >
-                  {/* Image */}
                   <div className="w-full">
                     <Image
                       src={project.image}
@@ -112,7 +110,6 @@ export const ProjectsSection = () => {
                     />
                   </div>
 
-                  {/* Content */}
                   <div className="w-full p-6 md:p-8 space-y-4 flex flex-col justify-between">
                     <div className="space-y-4">
                       <h3 className="text-xl md:text-2xl font-semibold text-white">
