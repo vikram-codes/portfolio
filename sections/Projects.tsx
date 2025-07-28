@@ -50,7 +50,7 @@ const portfolioProjects = [
           "Used NextAuth for authentication and dynamic session-based UI updates",
       },
     ],
-    link: "https://the-wild-oasis-website-rho.vercel.app",
+    link: "https://the-wild-oasis-website-vik.vercel.app",
     github: "https://github.com/vikram-codes/The-Wild-Oasis-Webiste",
     image: theWildOasis,
   },
