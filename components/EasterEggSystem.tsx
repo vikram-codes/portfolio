@@ -130,7 +130,7 @@ const EasterEggSystem = () => {
   const showMessage = useCallback(
     (message: { text: string; emoji: string; type: string }) => {
       setCurrentMessage(message);
-      setTimeout(() => setCurrentMessage(null), 6000);
+      setTimeout(() => setCurrentMessage(null), 10000);
     },
     []
   );

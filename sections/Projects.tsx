@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import converso from "../assets/images/converso.png";
 import theWildOasis from "../assets/images/the-wild-oasis-website.png";
 import fastPizzaCo from "../assets/images/fast-pizza.png";
+import Resumind from "../assets/images/resumind.png";
 
 import ArrowUpRight from "../assets/icons/arrow-up-right.svg";
 import GithubLogo from "../assets/icons/github.svg";
@@ -54,21 +55,25 @@ const portfolioProjects = [
     image: theWildOasis,
   },
   {
-    company: "Fast Pizza Co.",
-    title: "Fast Pizza Co. – Pizza Ordering SPA (Frontend Focused)",
+    company: "ResuMind AI",
+    title: "ResuMind – AI-Powered Resume Analyzer",
     results: [
-      { title: "Built complete cart-to-checkout experience with React + Vite" },
       {
-        title: "Implemented responsive menu, cart, and order tracking flows",
+        title:
+          "Built comprehensive AI resume analysis with React + TypeScript + Vite",
       },
       {
         title:
-          "Styled entire UI using TailwindCSS with reusable utility-first patterns",
+          "Implemented PDF processing, real-time analysis, and interactive feedback dashboard",
+      },
+      {
+        title:
+          "Integrated Puter AI APIs with robust error handling and JSON parsing strategies",
       },
     ],
-    link: "https://fast-pizza-co-iota.vercel.app",
-    github: "https://github.com/vikram-codes/Fast-Pizza-co.",
-    image: fastPizzaCo,
+    link: "https://resumind-wine.vercel.app",
+    github: "https://github.com/vikram-codes/ai-resume-analyzer",
+    image: Resumind,
   },
 ];
 
